@@ -1,0 +1,34 @@
+[project]
+name = "quilting"
+version = "0.1.0"
+description = "An draft implementation of image quilting in cython"
+authors = [
+  { name = "Federico Simonetta", email = "22996003+00sapo@users.noreply.github.com" },
+]
+dependencies = ["tqdm>=4.66.1", "numpy>=1.26.2", "scikit-image>=0.22.0"]
+requires-python = ">=3.10"
+readme = "README.md"
+license = { text = "MIT" }
+
+[build-system]
+build-backend = "pdm.backend"
+requires = [
+  "pdm-backend",
+  "cython>=3.0.6",
+  "setuptools>=69.0.2",
+  "numpy>=1.23.5",
+]
+
+[tool.pdm.build]
+run-setuptools = true
+
+[tool.pdm.scripts]
+compile = { shell = "echo 'from setuptools import setup; import pdm_build; setup(**pdm_build.pdm_build_update_setup_kwargs(None, {}))' > setup.py; python setup.py build_ext --inplace" }
+
+[tool.pdm.dev-dependencies]
+dev = [
+    "ipdb>=0.13.13",
+    "py-spy>=0.3.14",
+    "Cython>=3.0.6",
+    "setuptools>=69.0.2",
+]
